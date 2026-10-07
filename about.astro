@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import site from '../data/site.json';
+const team = [
+  { name: 'Mankah Tadfor, MSN, BSN, RN', role: 'Provider', bio: 'Mankah has more than 8 years of clinical experience, from women\'s health to adult and geriatric care. She earned her BSN at New Mexico State University and her master\'s in nursing at the University of New Mexico, and is passionate about helping patients build healthy, lasting habits.' },
+  { name: 'Laiven Jean de Chantal, RN', photo: '/images/laiven.jpg', role: 'Registered Nurse', bio: 'Laiven has been a registered nurse for more than 7 years, caring for patients from pediatrics to geriatrics at University Medical Center of New Mexico, University of New Mexico Hospital, Presbyterian and Hennepin County Hospital. She earned her BSN at New Mexico State University and is a family nurse practitioner graduate of Bradley University.' },
+];
+const person = {
+  '@context': 'https://schema.org', '@type': 'Person', name: 'Ruth Nyang', honorificSuffix: 'MSN, FNP-C',
+  jobTitle: 'Family Nurse Practitioner, Founder', worksFor: { '@type': 'MedicalBusiness', name: site.name },
+  alumniOf: ['University of New Mexico', 'University of Texas at El Paso'],
+};
+---
+<Base
+  title="About iThrive | Nurse Practitioner-Led Wellness Clinic in Albuquerque"
+  description="Meet Ruth Nyang, MSN, FNP-C, and the iThrive team: a nurse practitioner-led wellness clinic in northwest Albuquerque serving Rio Rancho and Corrales."
+  schema={[person]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">About iThrive</span>
+      <h1>A nurse practitioner-led wellness clinic in northwest Albuquerque</h1>
+      <p class="lead">We believe health is more than the absence of disease. Our team helps patients from Albuquerque, Rio Rancho and Corrales feel their best with personal care, clear pricing and a health review before every new treatment.</p>
+    </div>
+  </section>
+
+  <section class="section" id="ruth">
+    <div class="container split">
+      <Photo src="/images/ruth.jpg" alt="Ruth Nyang, MSN, FNP-C" ratio="4 / 5" label="Photo: Ruth Nyang" />
+      <div>
+        <span class="eyebrow">Founder and provider</span>
+        <h2>Meet Ruth Nyang, MSN, FNP-C</h2>
+        <p>Ruth is a board-certified family nurse practitioner with more than 18 years in healthcare: 10 years as a registered nurse and more than 9 as a nurse practitioner.</p>
+        <p>She earned her Bachelor of Science in Nursing at the University of New Mexico (go Lobos!) and her master's degree at the University of Texas at El Paso (go Miners!). She has cared for patients in inpatient, outpatient and specialty settings, including as an RN and FNP at PHS and Lovelace Health System.</p>
+        <p>Originally from Cameroon, West Africa, Ruth now calls Rio Rancho home. Outside the clinic she enjoys traveling, cooking, music, photography, volunteering and time with family and friends.</p>
+        <a class="btn" href={site.bookingUrl} rel="noopener">Book a consultation with Ruth</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream" id="team">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Our team</span><h2>The iThrive care team</h2></div>
+      <div class="grid grid-2">
+        {team.map((t) => (
+          <article class="card">
+            {t.photo
+              ? <div class="team-photo"><Photo src={t.photo} alt={t.name} ratio="1 / 1" position="center 20%" /></div>
+              : <div class="avatar" aria-hidden="true">{t.name.split(' ').slice(0, 2).map((w) => w[0]).join('')}</div>}
+            <h3>{t.name}</h3>
+            <span class="tag" style="align-self:flex-start">{t.role}</span>
+            <p class="muted">{t.bio}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">What to expect</span><h2>Your visit, step by step</h2></div>
+      <ol class="visit">
+        <li><strong>Book your appointment</strong> online or by calling or texting {site.phone}.</li>
+        <li><strong>Complete intake</strong> forms and consents online. A credit card secures your booking.</li>
+        <li><strong>Choose your service</strong> from our menu, or request a consultation to find what is right for you.</li>
+        <li><strong>Health review.</strong> At your first visit we review your health history and check your vital signs.</li>
+        <li><strong>Personalized care.</strong> We prepare and give your infusion, or begin your weight loss consultation.</li>
+        <li><strong>Relax.</strong> Most infusions take about 45 to 60 minutes.</li>
+        <li><strong>Aftercare.</strong> We monitor you briefly, give you discharge instructions and answer your questions.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section bg-mint">
+    <div class="container center" style="max-width:720px">
+      <h2>We would love to meet you</h2>
+      <a class="btn" href={site.bookingUrl} rel="noopener">Book a visit</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .split { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 56px; align-items: start; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } .split > :first-child { max-width: 380px; } }
+  .team-photo { width: 96px; }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--green-100); color: var(--green-900); display: grid; place-items: center; font-weight: 800; font-size: 1.2rem; }
+  .visit { max-width: 760px; padding-left: 1.2em; display: grid; gap: 12px; color: var(--muted); }
+  .visit strong { color: var(--ink); }
+</style>

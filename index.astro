@@ -1,0 +1,209 @@
+---
+import Base from '../layouts/Base.astro';
+import Hours from '../components/Hours.astro';
+import Faq from '../components/Faq.astro';
+import Photo from '../components/Photo.astro';
+import site from '../data/site.json';
+import svc from '../data/services.json';
+import { faqSchema } from '../lib';
+
+const ivFrom = Math.min(...svc.ivs.map((i) => i.price));
+const iv = svc.memberships[0];
+
+const faqs = [
+  { q: 'Is IV therapy safe for me?', a: 'Before your first treatment we review your health history and check your vital signs. If an infusion is not a good fit for you, we will tell you and talk through other options.' },
+  { q: 'Do I need lab work?', a: 'It depends on the service. Medical weight loss requires recent labs. For IV therapy, your provider will let you know if any labs are needed, for example a G6PD test before high-dose Vitamin C.' },
+  { q: 'How long does a visit take?', a: 'Most IV infusions take about 45 to 60 minutes, plus a short check-in before and brief monitoring afterward. Some NAD+ doses take longer.' },
+  { q: 'How much does it cost?', a: `IV infusions start at $${ivFrom}. See the <a href="/iv-therapy/">IV menu</a> for every price.` },
+  { q: 'How do I cancel a membership?', a: svc.membershipTerms },
+];
+---
+<Base
+  title="IV Therapy and Medical Weight Loss in Albuquerque | iThrive"
+  description="Nurse practitioner-led IV therapy and medical weight loss in northwest Albuquerque, serving Rio Rancho and Corrales. Book online or call (505) 926-2999."
+  schema={[faqSchema(faqs)]}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Northwest Albuquerque · Serving Rio Rancho &amp; Corrales</span>
+        <h1>Nurse practitioner-led IV therapy and medical weight loss in northwest Albuquerque</h1>
+        <p class="lead">Personal, unhurried care from Ruth Nyang, MSN, FNP-C, and our licensed nursing team. Every new patient has a health review before treatment.</p>
+        <div class="btn-row">
+          <a class="btn" href={site.bookingUrl} rel="noopener">Book a visit</a>
+          <a class="btn gold" href={site.weightLossConsultUrl} rel="noopener">Free weight loss phone consult</a>
+        </div>
+        <p class="small muted call-line">Questions? Call or text <a href={site.phoneHref}><strong>{site.phone}</strong></a></p>
+      </div>
+      <div class="hero-photo">
+        <Photo src="/images/hero.jpg" alt="A patient relaxing during an IV infusion at iThrive" ratio="12 / 13" label="Clinic photo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="trust" aria-label="Why patients trust iThrive">
+    <div class="container">
+      <ul>
+        <li>Led by Ruth Nyang, MSN, FNP-C</li>
+        <li>18+ years in healthcare</li>
+        <li>Licensed nurse practitioners and registered nurses</li>
+        <li>Health review before your first treatment</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Our services</span>
+        <h2>Care built around your goals</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <Photo src="/images/iv-bag.jpg" alt="IV bag with vitamin infusion" ratio="16 / 10" class="card-img" />
+          <h3>IV Vitamin Therapy</h3>
+          <p class="price">From ${ivFrom}</p>
+          <p class="grow muted">Hydration and vitamin infusions given by licensed nurses after a health review. Not sure which drip fits? We will help you choose.</p>
+          <a class="btn" href="/iv-therapy/">See the IV menu</a>
+        </article>
+        <article class="card">
+          <Photo src="/images/weight-loss.jpg" alt="Weight loss" ratio="16 / 10" class="card-img" />
+          <h3>Medical Weight Loss</h3>
+          <p class="price">{svc.weightLoss.phoneConsult}</p>
+          <p class="grow muted">A nurse practitioner-led program that combines nutrition, activity, follow-up and prescription options when appropriate. Results vary, and it is not right for everyone.</p>
+          <a class="btn" href="/weight-loss/">How the program works</a>
+        </article>
+        <article class="card">
+          <Photo src="/images/energy.jpg" alt="Man jogging outdoors" ratio="16 / 10" class="card-img" position="center 25%" />
+          <h3>Hormone Therapy</h3>
+          <p class="price">Coming soon</p>
+          <p class="grow muted">We are preparing our hormone therapy program. Join the waitlist and we will let you know as soon as it opens.</p>
+          <a class="btn outline" href="/hormone-therapy/">Join the waitlist</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Simple from start to finish</h2>
+      </div>
+      <ol class="steps grid grid-4">
+        <li><span class="step-num">01</span><h3>Book your visit</h3><p class="muted">Book online in a few minutes, or call or text us.</p></li>
+        <li><span class="step-num">02</span><h3>Complete intake</h3><p class="muted">Fill out your intake forms online before you arrive. A card on file secures your booking.</p></li>
+        <li><span class="step-num">03</span><h3>Health review</h3><p class="muted">At your first visit we review your health history and check your vital signs.</p></li>
+        <li><span class="step-num">04</span><h3>Relax and recharge</h3><p class="muted">Most infusions take 45 to 60 minutes. We monitor you briefly afterward and send you home with instructions.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Meet Ruth -->
+  <section class="section">
+    <div class="container split">
+      <div class="ruth-photo">
+        <Photo src="/images/ruth.jpg" alt="Ruth Nyang, MSN, FNP-C" ratio="4 / 5" label="Photo: Ruth Nyang" />
+      </div>
+      <div>
+        <span class="eyebrow">Meet your provider</span>
+        <h2>Ruth Nyang, MSN, FNP-C</h2>
+        <p class="muted">Ruth is a board-certified family nurse practitioner and the founder of iThrive, with more than 18 years in healthcare: 10 as a registered nurse and more than 9 as a nurse practitioner. She trained at the University of New Mexico and the University of Texas at El Paso, and has cared for Albuquerque patients at PHS and Lovelace Health System.</p>
+        <p class="muted">She lives in Rio Rancho and started iThrive to give her neighbors personal, practical support for feeling their best.</p>
+        <a class="btn outline" href="/about/#ruth">Meet the team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews: add three real Google review quotes here once confirmed -->
+
+  <!-- Membership -->
+  <section class="section bg-green">
+    <div class="container split membership">
+      <div>
+        <span class="eyebrow">IV Wellness Membership</span>
+        <h2>${iv.price} a month for 2 IV infusions</h2>
+        <p>{svc.membershipTerms}</p>
+      </div>
+      <div>
+        <ul class="checklist light">
+          {iv.perks.slice(1, 5).map((p) => <li>{p}</li>)}
+        </ul>
+        <a class="btn light" href="/membership/">Compare memberships</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <Faq items={faqs} />
+      <p class="small" style="margin-top:20px"><a href="/faq/">See all questions</a></p>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="section bg-cream" id="location">
+    <div class="container split location">
+      <div>
+        <span class="eyebrow">Visit us</span>
+        <h2>Location and hours</h2>
+        <address>
+          <strong>{site.name}</strong><br />
+          {site.address.street}<br />
+          {site.address.city}, {site.address.state} {site.address.zip}
+        </address>
+        <p>Call or text <a href={site.phoneHref}><strong>{site.phone}</strong></a><br />Easy to reach from Rio Rancho and Corrales.</p>
+        <Hours />
+        <div class="btn-row">
+          <a class="btn" href={site.bookingUrl} rel="noopener">Book a visit</a>
+          <a class="btn outline" href={site.mapsUrl} rel="noopener">Get directions</a>
+        </div>
+      </div>
+      <iframe class="map" title="Map to iThrive Infusion & Wellness" src={site.mapEmbed} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-mint">
+    <div class="container center" style="max-width:720px">
+      <h2>Ready to feel your best?</h2>
+      <p class="lead center">Book online in a few minutes, or call or text {site.phone}.</p>
+      <a class="btn" href={site.bookingUrl} rel="noopener">Book a visit</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { background: var(--cream); padding: 72px 0 80px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+  .call-line { margin-top: 18px; }
+  .hero-photo { max-width: 460px; justify-self: end; width: 100%; }
+  .trust { background: var(--green-500); color: var(--on-green); padding: 20px 0; }
+  .trust ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; font-weight: 550; }
+  .trust li { padding-left: 26px; position: relative; }
+  .trust li::before { content: ''; position: absolute; left: 0; top: 0.35em; width: 16px; height: 16px; border-radius: 50%; background: var(--charcoal); }
+  @media (max-width: 640px) { .trust ul { justify-content: flex-start; flex-direction: column; } .hero-photo { max-width: 320px; } }
+  .steps { list-style: none; padding: 0; margin: 0; }
+  .step-num { display: block; font-size: 2.4rem; font-weight: 800; color: var(--gold-500); line-height: 1; margin-bottom: 12px; }
+  .split { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: center; }
+  .ruth-photo { max-width: 400px; }
+  .membership { grid-template-columns: 1.1fr 0.9fr; }
+  .checklist.light li { color: var(--white); }
+  .location { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+  address { font-style: normal; margin-bottom: 1em; }
+  .map { width: 100%; height: 100%; min-height: 420px; border: 0; border-radius: 18px; box-shadow: var(--shadow); }
+  @media (max-width: 900px) {
+    .hero-grid, .split, .membership, .location { grid-template-columns: 1fr; gap: 36px; }
+    .hero-photo { justify-self: start; max-width: 380px; }
+    .map { min-height: 320px; }
+  }
+</style>

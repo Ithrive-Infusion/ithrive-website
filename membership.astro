@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import svc from '../data/services.json';
+---
+<Base
+  title="IV Therapy Membership in Albuquerque | iThrive"
+  description={`IV wellness membership in northwest Albuquerque: 2 IV infusions a month for $${svc.memberships[0].price}, plus 20% off extra IVs. ${svc.membershipTerms}`}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Membership</span>
+      <h1>IV wellness membership: 2 IVs a month for ${svc.memberships[0].price}</h1>
+      <p class="lead">Regular infusions for less, with perks for you and your family. {svc.membershipTerms}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2 plans">
+        {svc.memberships.map((m, i) => (
+          <article class:list={['card', { featured: i === 0 }]}>
+            <h2 class="h3">{m.name}</h2>
+            <p class="amount"><span>${m.price}</span> / month</p>
+            <ul class="checklist grow">{m.perks.map((p) => <li>{p}</li>)}</ul>
+            <a class="btn" href={site.bookingUrl} rel="noopener">Join {m.name}</a>
+          </article>
+        ))}
+      </div>
+      <div class="notice" style="margin-top:32px">
+        <p><strong>Membership terms.</strong> {svc.membershipTerms} "Specialty IVs" means the infusions listed under Specialty IVs on our <a href="/iv-therapy/">IV menu</a>, including NAD+ and high-dose Vitamin C. Weight Loss Elite requires a qualifying weight loss consultation first.</p>
+        <p style="margin:0"><strong>Referral perk:</strong> refer a friend and you both get 20% off your next infusion.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .h3 { font-size: 1.5rem; }
+  .amount { font-size: 1.05rem; color: var(--muted); margin: 0; }
+  .amount span { font-size: 2.6rem; font-weight: 800; color: var(--ink); }
+  .featured { border: 2px solid var(--green-800); }
+  .card .btn { align-self: flex-start; }
+</style>
