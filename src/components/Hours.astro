@@ -1,0 +1,31 @@
+---
+import site from '../data/site.json';
+const fmt = (t: string) => {
+  const [h, m] = t.split(':').map(Number);
+  const ap = h >= 12 ? 'PM' : 'AM';
+  const hh = h % 12 || 12;
+  return `${hh}:${String(m).padStart(2, '0')} ${ap}`;
+};
+const { light = false } = Astro.props;
+---
+<table class:list={['hours', { light }]}>
+  <caption class="visually-hidden">Clinic hours</caption>
+  <tbody>
+    {site.hours.map((d) => (
+      <tr>
+        <th scope="row">{d.day}</th>
+        <td>{d.open ? `${fmt(d.open)} – ${fmt(d.close!)}` : 'Closed'}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<p class="small hours-note">{site.hoursNote}</p>
+
+<style>
+  .hours { width: 100%; border-collapse: collapse; font-size: 0.97rem; }
+  .hours th { text-align: left; font-weight: 600; padding: 7px 0; }
+  .hours td { text-align: right; padding: 7px 0; color: var(--muted); }
+  .hours tr + tr th, .hours tr + tr td { border-top: 1px solid var(--line); }
+  .hours.light th, .hours.light td { color: #e9f2e1; border-color: rgba(255,255,255,0.15); }
+  .hours-note { margin-top: 8px; font-style: italic; }
+</style>

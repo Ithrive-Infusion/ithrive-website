@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import site from '../data/site.json';
+import svc from '../data/services.json';
+import { faqSchema } from '../lib';
+const from = Math.min(...svc.ivs.map((i) => i.price));
+const groups = [
+  { title: 'Getting started', items: [
+    { q: 'How do I book?', a: `Book online through our <a href="${site.bookingUrl}" rel="noopener">booking page</a>, or call or text ${site.phone}. We are open by appointment only.` },
+    { q: 'What should I bring to my first visit?', a: 'A photo ID, a list of your current medications and supplements, and any recent lab results. Complete your online intake forms before you arrive.' },
+    { q: 'Where are you located?', a: `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}. We are an easy drive from Rio Rancho and Corrales. <a href="/contact/">See map and hours</a>.` },
+  ]},
+  { title: 'IV therapy', items: [
+    { q: 'Is IV therapy safe for me?', a: 'Before your first treatment we review your health history and check your vital signs. If an infusion is not a good fit for you, we will tell you and talk through other options.' },
+    { q: 'How long does an infusion take?', a: 'Most take about 45 to 60 minutes. NAD+ infusions can take 1 to 4 hours depending on the dose.' },
+    { q: 'How much does an IV cost?', a: `Infusions start at $${from}. See every price on our <a href="/iv-therapy/">IV menu</a>.` },
+    { q: 'Do I need labs for IV therapy?', a: 'Usually not, but some infusions require them. For example, high-dose Vitamin C above 10 g requires a G6PD test first.' },
+  ]},
+  { title: 'Weight loss', items: [
+    { q: 'How do I start?', a: 'Book a free 10-minute phone consult. We will check whether the program is a fit and explain next steps.' },
+    { q: 'Who qualifies?', a: 'Generally a BMI of 30 or higher, or 27 or higher with a weight-related condition. Some medical histories, such as medullary thyroid cancer, MEN 2 or pancreatitis, mean GLP-1 medication is not an option. <a href="/weight-loss/#safety">Read the safety information</a>.' },
+  ]},
+  { title: 'Membership and billing', items: [
+    { q: 'What does the membership include?', a: `2 IV infusions a month for $${svc.memberships[0].price}, plus 20% off extra IVs and add-ons. <a href="/membership/">See full details</a>.` },
+    { q: 'How do I cancel?', a: svc.membershipTerms },
+  ]},
+];
+const all = groups.flatMap((g) => g.items);
+---
+<Base
+  title="Frequently Asked Questions | iThrive, Albuquerque"
+  description="Answers about IV therapy, medical weight loss, pricing, membership and what to expect at iThrive Infusion & Wellness in Albuquerque."
+  schema={[faqSchema(all)]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">FAQ</span>
+      <h1>Frequently asked questions</h1>
+      <p class="lead">Do not see your question? Call or text <a href={site.phoneHref}>{site.phone}</a>.</p>
+    </div>
+  </section>
+  {groups.map((g, i) => (
+    <section class:list={['section', 'tight', { 'bg-cream': i % 2 === 1 }]}>
+      <div class="container">
+        <h2>{g.title}</h2>
+        <Faq items={g.items} />
+      </div>
+    </section>
+  ))}
+</Base>

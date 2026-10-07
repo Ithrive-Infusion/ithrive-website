@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import site from '../data/site.json';
+import svc from '../data/services.json';
+import { faqSchema, money } from '../lib';
+const wl = svc.weightLoss;
+
+const faqs = [
+  { q: 'Do I qualify?', a: 'Generally you need a BMI of 30 or higher, or a BMI of 27 or higher with at least one weight-related condition such as high blood pressure, sleep apnea or high cholesterol. Your provider makes the final decision after reviewing your history and labs.' },
+  { q: 'Do I need labs?', a: 'Yes. We need labs from the last 3 months. If you do not have them, we will order them and you can have them drawn at any Labcorp location.' },
+  { q: 'Is the medication shipped to me?', a: 'Depending on the option, you can pick up in clinic or have your medication shipped to your home. Your provider will go over this at your consultation.' },
+  { q: 'What happens when I reach my goal?', a: 'We focus on keeping healthy habits in place. Depending on your situation, your provider may recommend a lower maintenance dose, a different option, or stopping medication.' },
+  { q: 'How do follow-ups work?', a: 'Each month includes a follow-up visit, in clinic or by telehealth. Labs are repeated every 3 months.' },
+];
+---
+<Base
+  title="Medical Weight Loss and GLP-1 in Albuquerque | iThrive"
+  description="Nurse practitioner-led medical weight loss in northwest Albuquerque with GLP-1 options, monthly follow-up and coaching. Start with a free 10-minute phone consult."
+  schema={[faqSchema(faqs)]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Medical weight loss</span>
+      <h1>Medical weight loss in Albuquerque: nurse practitioner-led GLP-1 programs</h1>
+      <p class="lead">A plan built around nutrition, activity, monthly follow-up and prescription options when appropriate. Designed to support weight loss, not replace healthy habits. Results vary, and it is not right for everyone.</p>
+      <div class="btn-row">
+        <a class="btn" href={site.weightLossConsultUrl} rel="noopener">Book a free 10-minute phone consult</a>
+        <a class="btn outline" href={site.phoneHref}>Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">How it works</span><h2>Your first month, step by step</h2></div>
+      <ol class="steps grid grid-4">
+        <li><span class="step-num">01</span><h3>Free phone consult</h3><p class="muted">A 10-minute call to see whether the program is a fit for you.</p></li>
+        <li><span class="step-num">02</span><h3>Labs and paperwork</h3><p class="muted">We email your intake forms and consents, and order labs if you do not have recent ones.</p></li>
+        <li><span class="step-num">03</span><h3>Initial consultation</h3><p class="muted">We review your history, labs and goals, and give basic nutrition and exercise coaching. {money(wl.initialConsult)}, {wl.initialConsultNote.toLowerCase()}</p></li>
+        <li><span class="step-num">04</span><h3>Treatment and follow-up</h3><p class="muted">If you have no medical reasons not to start, we begin your plan with a monthly follow-up and app-based coaching.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section bg-cream" id="medications">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Options and pricing</span>
+        <h2>Medication options</h2>
+        <p class="muted">Your provider will recommend what fits your health and goals. Not every option is right for everyone.</p>
+      </div>
+      <div class="grid grid-3">
+        {wl.options.map((o) => (
+          <article class="card" id={o.id}>
+            <h3>{o.name}</h3>
+            <p class="price">{o.price}</p>
+            <p class="muted grow">{o.detail}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="safety">
+    <div class="container narrow">
+      <span class="eyebrow">Safety</span>
+      <h2>What to know about GLP-1 medications</h2>
+      <p class="muted">Semaglutide and tirzepatide are prescription medications with real risks. Your provider will go over the full prescribing information with you before you start. In plain language:</p>
+      <h3>Common side effects</h3>
+      <p class="muted">Nausea, vomiting, diarrhea, constipation, indigestion and reactions at the injection site. These are often worse when starting or increasing a dose.</p>
+      <h3>Serious risks</h3>
+      <p class="muted">These medications carry a boxed warning about thyroid C-cell tumors seen in animal studies. Other serious risks include pancreatitis, gallbladder problems, low blood sugar (especially with other diabetes medications), kidney problems from dehydration, and allergic reactions. Get medical care right away for severe stomach pain, a lump or swelling in your neck, trouble swallowing, or signs of an allergic reaction.</p>
+      <h3>You may not qualify if you have</h3>
+      <ul class="checklist">
+        <li>A personal or family history of medullary thyroid cancer</li>
+        <li>Multiple endocrine neoplasia syndrome type 2 (MEN 2)</li>
+        <li>A history of pancreatitis</li>
+        <li>Type 1 diabetes</li>
+        <li>Pregnancy, plans to become pregnant, or breastfeeding</li>
+      </ul>
+      <p class="notice">Ask your provider whether your medication is an FDA-approved brand-name product or a compounded medication, and which pharmacy it comes from. Compounded medications are not FDA-approved.</p>
+    </div>
+  </section>
+
+  <section class="section bg-cream" id="support">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Optional add-ons</span>
+        <h2>Program support</h2>
+        <p class="muted">Optional services some patients add to their plan. They are not a substitute for a weight loss program.</p>
+      </div>
+      <table class="table" style="max-width:720px;background:var(--white);border-radius:12px">
+        <tbody>
+          {wl.support.map((s) => <tr><td>{s.name}</td><td class="num">{money(s.price)}</td></tr>)}
+        </tbody>
+      </table>
+      <p class="small muted" style="margin-top:16px">Want medication and an iTrim infusion bundled each month? See the <a href="/membership/">Weight Loss Elite membership</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><h2>Weight loss questions</h2></div>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <section class="section bg-mint">
+    <div class="container center" style="max-width:720px">
+      <h2>Start with a free 10-minute call</h2>
+      <p class="lead center">No commitment. We will tell you honestly whether the program is a good fit.</p>
+      <a class="btn" href={site.weightLossConsultUrl} rel="noopener">Book a free phone consult</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .steps { list-style: none; padding: 0; margin: 0; }
+  .step-num { display: block; font-size: 2.4rem; font-weight: 800; color: var(--gold-500); line-height: 1; margin-bottom: 12px; }
+  .narrow { max-width: 820px; }
+  .narrow h3 { margin-top: 1.4em; }
+</style>

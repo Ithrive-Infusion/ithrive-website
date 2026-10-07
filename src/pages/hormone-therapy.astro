@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base
+  title="Hormone Therapy in Albuquerque: Coming Soon | iThrive"
+  description="iThrive is preparing a hormone therapy program in northwest Albuquerque. Call or text (505) 926-2999 to join the waitlist."
+>
+  <section class="page-hero">
+    <div class="container" style="max-width:760px">
+      <span class="eyebrow">Hormone therapy</span>
+      <h1>Hormone therapy is coming soon</h1>
+      <p class="lead">We are preparing our hormone therapy program. Join the waitlist and we will contact you as soon as it opens.</p>
+      <div class="btn-row">
+        <a class="btn" href={site.smsHref}>Text us to join the waitlist</a>
+        <a class="btn outline" href={site.phoneHref}>Call {site.phone}</a>
+      </div>
+      <p class="small muted" style="margin-top:16px">Please do not include health details in your text. We will follow up by phone.</p>
+    </div>
+  </section>
+</Base>

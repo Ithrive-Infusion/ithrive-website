@@ -1,0 +1,72 @@
+---
+import site from '../data/site.json';
+import Hours from './Hours.astro';
+const year = new Date().getFullYear();
+const socials = Object.entries(site.social).filter(([, url]) => url);
+---
+<footer class="site-footer">
+  <div class="container cols">
+    <div>
+      <p class="f-brand">iThrive Infusion &amp; Wellness</p>
+      <p>Nurse practitioner-led IV therapy and medical weight loss in northwest Albuquerque, serving Rio Rancho and Corrales.</p>
+      <a class="btn light sm" href={site.bookingUrl} rel="noopener">Book a visit</a>
+      {socials.length > 0 && (
+        <ul class="social">
+          {socials.map(([name, url]) => <li><a href={url} rel="noopener">{name[0].toUpperCase() + name.slice(1)}</a></li>)}
+        </ul>
+      )}
+    </div>
+    <div>
+      <p class="f-head">Visit</p>
+      <address>
+        {site.address.street}<br />
+        {site.address.city}, {site.address.state} {site.address.zip}
+      </address>
+      <p><a href={site.phoneHref}>Call or text {site.phone}</a></p>
+      <p><a href={site.mapsUrl} rel="noopener">Get directions</a></p>
+    </div>
+    <div>
+      <p class="f-head">Hours</p>
+      <Hours light />
+    </div>
+    <div>
+      <p class="f-head">Explore</p>
+      <ul class="links">
+        <li><a href="/iv-therapy/">IV therapy</a></li>
+        <li><a href="/weight-loss/">Medical weight loss</a></li>
+        <li><a href="/injections/">Injections</a></li>
+        <li><a href="/membership/">Membership</a></li>
+        <li><a href="/about/">About us</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href={site.portalUrl} rel="noopener">Patient portal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container legal">
+    <p>Information on this website is for general education and is not medical advice. Treatment is provided only after a health review and is not right for everyone. Individual results vary.</p>
+    <p>
+      © {year} {site.legalName}{' · '}
+      <a href="/privacy/">Privacy policy</a>{' · '}
+      <a href="/terms/">Terms of use</a>{' · '}
+      <a href="/medical-disclaimer/">Medical disclaimer</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--green-900); color: #dfe9d8; padding: 64px 0 24px; font-size: 0.97rem; }
+  .site-footer a:not(.btn) { color: var(--white); }
+  .cols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.9fr; gap: 40px; }
+  @media (max-width: 900px) { .cols { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .cols { grid-template-columns: 1fr; } }
+  .f-brand { font-weight: 800; font-size: 1.2rem; color: var(--white); }
+  .f-head { font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
+  address { font-style: normal; margin-bottom: 1em; }
+  .links, .social { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .social { display: flex; gap: 14px; margin-top: 18px; }
+  .links a { text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+  .legal { border-top: 1px solid rgba(255,255,255,0.15); margin-top: 48px; padding-top: 20px; font-size: 0.85rem; color: #b9c8b0; }
+  .legal a { color: #dfe9d8; }
+</style>
