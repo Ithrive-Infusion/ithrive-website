@@ -10,7 +10,6 @@ const files = {
   // brand + people
   'logo.png': '2022/11/Logo.png',
   'ruth.jpg': '2023/01/ruth-image.jpg',
-  'laiven.jpg': '2023/07/WhatsApp-Image-2023-07-05-at-17.35.12.jpg',
   // page photos
   'hero.jpg': '2022/11/about-us.jpg',
   'iv-bag.jpg': '2022/11/item-3.jpg',
