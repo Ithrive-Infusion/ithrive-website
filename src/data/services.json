@@ -159,20 +159,20 @@
       {
         "id": "semaglutide",
         "name": "Semaglutide (GLP-1)",
-        "price": "From $200 a month",
-        "detail": "Weekly injections. Includes supplies and a monthly follow-up visit, in clinic or by telehealth."
+        "price": "From $250 for 4 weeks",
+        "detail": "Weekly injections, 4-week supply. $250 in clinic, or $300 shipped to your home. Includes supplies, a monthly follow-up visit (in clinic or by telehealth) and our app with meal plans, grocery lists, exercise plans and a weight and food tracker."
       },
       {
         "id": "tirzepatide",
         "name": "Tirzepatide (GLP-1/GIP)",
-        "price": "From $350 a month",
-        "detail": "Weekly injections. Includes supplies and a monthly follow-up visit, in clinic or by telehealth."
+        "price": "$650 for 8 weeks",
+        "detail": "Weekly injections, 8-week supply shipped to your home. Includes supplies, a monthly follow-up visit (in clinic or by telehealth) and our app with meal plans, grocery lists, exercise plans and a weight and food tracker."
       },
       {
         "id": "oral",
-        "name": "Oral medication options",
+        "name": "Oral medication (Bella capsules)",
         "price": "Discussed at consult",
-        "detail": "For some patients, oral prescription options may be appropriate. Your provider will go over options, ingredients and side effects with you."
+        "detail": "Once-daily compounded capsules for some patients. Our formulations do not contain phentermine; some contain caffeine. Compounded medications are not FDA-approved. Your provider will go over ingredients and side effects with you."
       }
     ],
     "support": [
