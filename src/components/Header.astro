@@ -13,6 +13,12 @@ const nav = [
   { href: '/contact/', label: 'Contact' },
 ];
 ---
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</span>
+    <a href={site.phoneHref}>Call or text {site.phone}</a>
+  </div>
+</div>
 <header class="site-header">
   <div class="container bar">
     <a href="/" class="brand" aria-label="iThrive Infusion & Wellness, home">
@@ -59,6 +65,10 @@ const nav = [
 </script>
 
 <style>
+  .topbar { background: var(--green-500); color: var(--on-green); font-size: 0.9rem; font-weight: 600; }
+  .topbar-inner { display: flex; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 8px; }
+  .topbar a { color: var(--on-green); text-decoration: none; white-space: nowrap; }
+  @media (max-width: 640px) { .topbar-inner span { display: none; } .topbar-inner { justify-content: center; } }
   .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 76px; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
@@ -68,9 +78,9 @@ const nav = [
   .word small { font-weight: 600; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
   .nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
   .nav a { white-space: nowrap; display: block; padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--ink); font-weight: 550; font-size: 0.97rem; }
-  .nav a:hover, .nav a[aria-current] { background: var(--green-100); color: var(--green-900); }
+  .nav a:hover, .nav a[aria-current] { background: var(--green-500); color: var(--on-green); }
   .actions { display: flex; align-items: center; gap: 14px; }
-  .call { font-weight: 650; text-decoration: none; white-space: nowrap; }
+  .call { display: none; }
   .menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 8px; color: var(--ink); cursor: pointer; }
   .mobile-nav { border-top: 1px solid var(--line); background: var(--white); }
   .mobile-nav ul { list-style: none; margin: 0; padding: 8px 20px 16px; }

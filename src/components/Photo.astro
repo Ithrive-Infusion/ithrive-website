@@ -1,14 +1,18 @@
 ---
 // Shows a real photo when it exists in public/images, otherwise a tasteful placeholder.
 import fs from 'node:fs';
-interface Props { src: string; alt: string; ratio?: string; label?: string }
-const { src, alt, ratio = '4 / 5', label } = Astro.props;
+interface Props { src: string; alt: string; ratio?: string; label?: string; class?: string; position?: string }
+const { src, alt, ratio = '4 / 5', label, class: cls, position = 'center' } = Astro.props;
 const exists = fs.existsSync('public' + src);
 ---
 {exists
-  ? <img class="photo" src={src} alt={alt} style={`aspect-ratio:${ratio}`} loading="lazy" decoding="async" />
-  : <div class="photo ph" style={`aspect-ratio:${ratio}`} role="img" aria-label={alt}><span>{label ?? alt}</span></div>}
+  ? <img class:list={["photo", cls]} src={src} alt={alt} style={`aspect-ratio:${ratio};object-position:${position}`} loading="lazy" decoding="async" />
+  : <div class:list={["photo ph", cls]} style={`aspect-ratio:${ratio}`} role="img" aria-label={alt}><span>{label ?? alt}</span></div>}
 <style>
   .photo { width: 100%; object-fit: cover; border-radius: 18px; box-shadow: var(--shadow); }
   .ph { background: linear-gradient(135deg, #e7f0dd, #f5efe0); display: grid; place-items: center; color: var(--muted); font-weight: 600; text-align: center; padding: 20px; border: 1px dashed #c9d6bd; }
+</style>
+
+<style is:global>
+  .card .photo.card-img { border-radius: 10px; box-shadow: none; margin-bottom: 6px; }
 </style>
