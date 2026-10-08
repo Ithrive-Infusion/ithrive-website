@@ -50,10 +50,10 @@ const old = {
   '/hormone-replacement-therapy': '/hormone-therapy/',
   '/membership-plans': '/membership/',
   '/about-us': '/about/',
-  '/meet-the-crew-team': '/about/#team',
+  '/meet-the-crew-team': '/about/',
   '/ruth-nyang-fnp-c': '/about/#ruth',
-  '/mankah-tadfor': '/about/#team',
-  '/laiven-jean-de-chantal-rn': '/about/#team',
+  '/mankah-tadfor': '/about/',
+  '/laiven-jean-de-chantal-rn': '/about/',
   '/contact-us': '/contact/',
 };
 

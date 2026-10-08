@@ -7,11 +7,10 @@
 - [ ] **Semaglutide pricing:** confirm $250 in clinic / $300 shipped and Tirzepatide $650 for 8 weeks. The old "Promotional Price" label has been removed.
 - [ ] **Hours:** Sunday is shown as closed (the old site didn't list Sunday). Also, the old About page mentioned walk-ins, but the hours say "By appointment only". Which is right?
 - [ ] **Hormone therapy:** launch date, and whether it starts with men only. It currently shows as a waitlist page.
-- [ ] **Team:** confirm Mankah's title and credentials ("Provider"?), and whether Laiven is still on the team. Send team photos.
 - [ ] **Membership:** does "specialty IVs" include NAD+ and high-dose Vitamin C? Confirm it bills monthly.
 - [ ] **Social links:** Instagram, Facebook, YouTube and TikTok URLs for `site.json`.
 - [ ] **Reviews:** star rating, review count and three short quotes (with permission). There's a placeholder spot on the homepage.
-- [ ] **Photos:** you, the team, the clinic and the infusion chairs.
+- [ ] **Photos:** you, the clinic and the infusion chairs.
 
 ## Hidden until reviewed (`"review": true`)
 - PICO IV (CBD): needs regulatory review of IV CBD.
