@@ -1,0 +1,29 @@
+name: Save photos to the repository
+
+# Copies the resized photos from the live preview site into public/images and commits them,
+# so builds no longer download them from the old WordPress site. Run it from the Actions tab.
+on: workflow_dispatch
+
+permissions:
+  contents: write
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download photos
+        run: |
+          mkdir -p public/images
+          for f in $(grep -oE "'[a-z0-9-]+\.(png|jpg)'" scripts/fetch-images.mjs | tr -d "'"); do
+            curl -fsSL --retry 3 "https://ithrive.pages.dev/images/$f" -o "public/images/$f"
+            echo "saved $f ($(stat -c %s public/images/$f) bytes)"
+          done
+      - name: Commit photos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898183+github-actions[bot]@users.noreply.github.com"
+          git add public/images
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Store site photos in the repository"
+          git push
