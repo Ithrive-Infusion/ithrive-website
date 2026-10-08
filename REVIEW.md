@@ -1,13 +1,14 @@
 # Before launch: decisions and checks
 
 ## Needs Ruth's answer
-- [ ] **Weight loss consult price:** the site says $100 (credited toward the first month), but OptiMantra reportedly charges $199. Pick one, then update `services.json` and OptiMantra.
-- [ ] **Free 10-minute phone consult link:** paste the direct OptiMantra link for this service into `weightLossConsultUrl` in `site.json`. It currently opens the general booking page.
+- [x] **Weight loss consult price:** now matches OptiMantra: $199 with labs, $100 if the patient brings labs.
+- [ ] **GLP-1 prices:** the site now uses OptiMantra's "from $200/month" (semaglutide) and "from $350/month" (tirzepatide). The old website said $250 to $300 for the first month and $650 for 2 months. Confirm which is current.
+- [x] **Free phone consult link:** OptiMantra has no direct link per service; it is the first option on the booking page.
 - [ ] **GLP-1 details:** which medications you prescribe, whether each is FDA-approved brand or compounded, and the pharmacy. The weight loss page currently tells patients to ask.
-- [ ] **Semaglutide pricing:** confirm $250 in clinic / $300 shipped and Tirzepatide $650 for 8 weeks. The old "Promotional Price" label has been removed.
 - [ ] **Hours:** Sunday is shown as closed (the old site didn't list Sunday). Also, the old About page mentioned walk-ins, but the hours say "By appointment only". Which is right?
 - [ ] **Hormone therapy:** launch date, and whether it starts with men only. It currently shows as a waitlist page.
-- [ ] **Membership:** does "specialty IVs" include NAD+ and high-dose Vitamin C? Confirm it bills monthly.
+- [x] **Membership:** specialty IVs are excluded (confirmed by OptiMantra and the old IV menu).
+- [ ] **Price differences between the website and OptiMantra:** NAD+ ($150 in OptiMantra vs $200 to $500 by dose on the site) and high-dose Vitamin C ($250 vs $110 to $350 by dose). OptiMantra also lists iZen ($175) and a few new add-ons that are not on the site.
 - [ ] **Social links:** Instagram, Facebook, YouTube and TikTok URLs for `site.json`.
 - [ ] **Reviews:** star rating, review count and three short quotes (with permission). There's a placeholder spot on the homepage.
 - [ ] **Photos:** you, the clinic and the infusion chairs.
