@@ -5,6 +5,7 @@ import Faq from '../components/Faq.astro';
 import Photo from '../components/Photo.astro';
 import site from '../data/site.json';
 import svc from '../data/services.json';
+import rv from '../data/reviews.json';
 import { faqSchema } from '../lib';
 
 const ivFrom = Math.min(...svc.ivs.map((i) => i.price));
@@ -120,7 +121,24 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Reviews: add three real Google review quotes here once confirmed -->
+  <!-- Reviews (edit src/data/reviews.json) -->
+  <section class="section bg-cream" id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Patient reviews</span>
+        <h2>What our patients say</h2>
+      </div>
+      <div class="grid grid-3">
+        {rv.reviews.map((r) => (
+          <figure class="card review">
+            <blockquote>“{r.quote}”</blockquote>
+            <figcaption><strong>{r.name}</strong><span class="small muted">Google review</span></figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="small" style="margin-top:20px"><a href={rv.googleUrl} rel="noopener">Read more reviews on Google</a></p>
+    </div>
+  </section>
 
   <!-- Membership -->
   <section class="section bg-green">
@@ -200,6 +218,9 @@ const faqs = [
   .ruth-photo { max-width: 400px; }
   .membership { grid-template-columns: 1.1fr 0.9fr; }
   .checklist.light li { color: var(--white); }
+  .review { margin: 0; }
+  .review blockquote { margin: 0 0 16px; flex: 1; font-size: 1.02rem; line-height: 1.6; color: var(--ink); }
+  .review figcaption { display: flex; flex-direction: column; gap: 2px; }
   .location { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
   address { font-style: normal; margin-bottom: 1em; }
   .map { width: 100%; height: 100%; min-height: 420px; border: 0; border-radius: 18px; box-shadow: var(--shadow); }
