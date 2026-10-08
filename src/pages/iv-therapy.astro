@@ -4,6 +4,7 @@ import Faq from '../components/Faq.astro';
 import site from '../data/site.json';
 import svc from '../data/services.json';
 import { faqSchema } from '../lib';
+import Photo from '../components/Photo.astro';
 
 const ivs = svc.ivs.filter((i) => !i.review);
 const specialty = svc.specialty.filter((i) => !i.review);
@@ -53,6 +54,7 @@ const faqs = [
       <div class="grid grid-3">
         {ivs.map((d) => (
           <article class="card" id={d.id}>
+            <Photo src={`/images/drip-${d.id}.jpg`} alt={`${d.name} IV infusion`} ratio="16 / 10" class="card-img" />
             <div class="row"><h3>{d.name}</h3><span class="price">${d.price}</span></div>
             <span class="tag">{d.tagline}</span>
             <p class="muted grow">{d.summary}</p>
@@ -114,6 +116,7 @@ const faqs = [
       <div class="grid grid-2" style="margin-top:24px">
         {specialty.map((d) => (
           <article class="card" id={d.id}>
+            {['ibrighten','ibrighten-plus'].includes(d.id) && <Photo src={`/images/drip-${d.id}.jpg`} alt={`${d.name} IV infusion`} ratio="16 / 10" class="card-img" />}
             <div class="row"><h3>{d.name}</h3><span class="price">${d.price}</span></div>
             <p class="muted grow">{d.summary}</p>
             <ul class="chips" aria-label="Ingredients">{d.ingredients.map((x) => <li>{x}</li>)}</ul>

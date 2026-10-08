@@ -4,6 +4,7 @@ import Faq from '../components/Faq.astro';
 import site from '../data/site.json';
 import svc from '../data/services.json';
 import { faqSchema, money } from '../lib';
+import Photo from '../components/Photo.astro';
 const wl = svc.weightLoss;
 
 const faqs = [
@@ -53,6 +54,7 @@ const faqs = [
       <div class="grid grid-3">
         {wl.options.map((o) => (
           <article class="card" id={o.id}>
+            <Photo src={`/images/wl-${o.id}.jpg`} alt="" ratio="16 / 10" class="card-img" />
             <h3>{o.name}</h3>
             <p class="price">{o.price}</p>
             <p class="muted grow">{o.detail}</p>

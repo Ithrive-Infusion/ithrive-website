@@ -32,12 +32,12 @@ const faqs = [
         <p class="lead">Personal, unhurried care from Ruth Nyang, MSN, FNP-C, and our licensed nursing team. Every new patient has a health review before treatment.</p>
         <div class="btn-row">
           <a class="btn" href={site.bookingUrl} rel="noopener">Book a visit</a>
-          <a class="btn outline" href={site.weightLossConsultUrl} rel="noopener">Free weight loss phone consult</a>
+          <a class="btn gold" href={site.weightLossConsultUrl} rel="noopener">Free weight loss phone consult</a>
         </div>
         <p class="small muted call-line">Questions? Call or text <a href={site.phoneHref}><strong>{site.phone}</strong></a></p>
       </div>
       <div class="hero-photo">
-        <Photo src="/images/ruth.jpg" alt="Ruth Nyang, MSN, FNP-C, founder of iThrive" ratio="1 / 1" label="Photo: Ruth or the clinic" />
+        <Photo src="/images/hero.jpg" alt="A patient relaxing during an IV infusion at iThrive" ratio="12 / 13" label="Clinic photo" />
       </div>
     </div>
   </section>
@@ -63,18 +63,21 @@ const faqs = [
       </div>
       <div class="grid grid-3">
         <article class="card">
+          <Photo src="/images/iv-bag.jpg" alt="IV bag with vitamin infusion" ratio="16 / 10" class="card-img" />
           <h3>IV Vitamin Therapy</h3>
           <p class="price">From ${ivFrom}</p>
           <p class="grow muted">Hydration and vitamin infusions given by licensed nurses after a health review. Not sure which drip fits? We will help you choose.</p>
           <a class="btn" href="/iv-therapy/">See the IV menu</a>
         </article>
         <article class="card">
+          <Photo src="/images/weight-loss.jpg" alt="Weight loss" ratio="16 / 10" class="card-img" />
           <h3>Medical Weight Loss</h3>
           <p class="price">{svc.weightLoss.phoneConsult}</p>
           <p class="grow muted">A nurse practitioner-led program that combines nutrition, activity, follow-up and prescription options when appropriate. Results vary, and it is not right for everyone.</p>
           <a class="btn" href="/weight-loss/">How the program works</a>
         </article>
         <article class="card">
+          <Photo src="/images/energy.jpg" alt="Man jogging outdoors" ratio="16 / 10" class="card-img" position="center 25%" />
           <h3>Hormone Therapy</h3>
           <p class="price">Coming soon</p>
           <p class="grow muted">We are preparing our hormone therapy program. Join the waitlist and we will let you know as soon as it opens.</p>
@@ -184,10 +187,10 @@ const faqs = [
   .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
   .call-line { margin-top: 18px; }
   .hero-photo { max-width: 460px; justify-self: end; width: 100%; }
-  .trust { background: var(--green-800); color: var(--white); padding: 20px 0; }
+  .trust { background: var(--green-500); color: var(--on-green); padding: 20px 0; }
   .trust ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; font-weight: 550; }
   .trust li { padding-left: 26px; position: relative; }
-  .trust li::before { content: ''; position: absolute; left: 0; top: 0.35em; width: 16px; height: 16px; border-radius: 50%; background: var(--green-500); }
+  .trust li::before { content: ''; position: absolute; left: 0; top: 0.35em; width: 16px; height: 16px; border-radius: 50%; background: var(--charcoal); }
   @media (max-width: 640px) { .trust ul { justify-content: flex-start; flex-direction: column; } .hero-photo { max-width: 320px; } }
   .steps { list-style: none; padding: 0; margin: 0; }
   .step-num { display: block; font-size: 2.4rem; font-weight: 800; color: var(--gold-500); line-height: 1; margin-bottom: 12px; }

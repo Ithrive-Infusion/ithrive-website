@@ -4,7 +4,7 @@ import Photo from '../components/Photo.astro';
 import site from '../data/site.json';
 const team = [
   { name: 'Mankah Tadfor, MSN, BSN, RN', role: 'Provider', bio: 'Mankah has more than 8 years of clinical experience, from women\'s health to adult and geriatric care. She earned her BSN at New Mexico State University and her master\'s in nursing at the University of New Mexico, and is passionate about helping patients build healthy, lasting habits.' },
-  { name: 'Laiven Jean de Chantal, RN', role: 'Registered Nurse', bio: 'Laiven has been a registered nurse for more than 7 years, caring for patients from pediatrics to geriatrics at University Medical Center of New Mexico, University of New Mexico Hospital, Presbyterian and Hennepin County Hospital. She earned her BSN at New Mexico State University and is a family nurse practitioner graduate of Bradley University.' },
+  { name: 'Laiven Jean de Chantal, RN', photo: '/images/laiven.jpg', role: 'Registered Nurse', bio: 'Laiven has been a registered nurse for more than 7 years, caring for patients from pediatrics to geriatrics at University Medical Center of New Mexico, University of New Mexico Hospital, Presbyterian and Hennepin County Hospital. She earned her BSN at New Mexico State University and is a family nurse practitioner graduate of Bradley University.' },
 ];
 const person = {
   '@context': 'https://schema.org', '@type': 'Person', name: 'Ruth Nyang', honorificSuffix: 'MSN, FNP-C',
@@ -45,7 +45,9 @@ const person = {
       <div class="grid grid-2">
         {team.map((t) => (
           <article class="card">
-            <div class="avatar" aria-hidden="true">{t.name.split(' ').slice(0, 2).map((w) => w[0]).join('')}</div>
+            {t.photo
+              ? <div class="team-photo"><Photo src={t.photo} alt={t.name} ratio="1 / 1" position="center 20%" /></div>
+              : <div class="avatar" aria-hidden="true">{t.name.split(' ').slice(0, 2).map((w) => w[0]).join('')}</div>}
             <h3>{t.name}</h3>
             <span class="tag" style="align-self:flex-start">{t.role}</span>
             <p class="muted">{t.bio}</p>
@@ -81,6 +83,7 @@ const person = {
 <style>
   .split { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 56px; align-items: start; }
   @media (max-width: 900px) { .split { grid-template-columns: 1fr; } .split > :first-child { max-width: 380px; } }
+  .team-photo { width: 96px; }
   .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--green-100); color: var(--green-900); display: grid; place-items: center; font-weight: 800; font-size: 1.2rem; }
   .visit { max-width: 760px; padding-left: 1.2em; display: grid; gap: 12px; color: var(--muted); }
   .visit strong { color: var(--ink); }
