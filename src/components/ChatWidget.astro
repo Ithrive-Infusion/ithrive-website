@@ -11,13 +11,13 @@ import site from '../data/site.json';
 >
   <button class="ic-launch" type="button" aria-expanded="false" aria-controls="ic-panel">
     <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-4.5 3.6A.6.6 0 0 1 3.5 21V18H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm3 6.5a1.5 1.5 0 1 0 0 .01Zm5 0a1.5 1.5 0 1 0 0 .01Zm5 0a1.5 1.5 0 1 0 0 .01Z"/></svg>
-    <span>Questions? Chat with us</span>
+    <span>Questions? Chat with Ava</span>
   </button>
 
   <section id="ic-panel" class="ic-panel" role="dialog" aria-modal="false" aria-labelledby="ic-title" hidden>
     <div class="ic-head">
       <div>
-        <p id="ic-title" class="ic-title">iThrive assistant</p>
+        <p id="ic-title" class="ic-title">Ava · iThrive assistant</p>
         <p class="ic-sub">AI assistant · not medical advice</p>
       </div>
       <button class="ic-close" type="button" aria-label="Close chat">
@@ -119,7 +119,7 @@ import site from '../data/site.json';
     const tags: string[] = [];
     const text = raw.replace(/\[(BOOK|CALL|CALLBACK|PAGE:\/[a-z-]*\/?)\]/g, (_, t) => { tags.push(t); return ''; }).trim();
     const wrap = el('div', `ic-msg ic-${role}`);
-    const who = el('span', 'visually-hidden', role === 'user' ? 'You said: ' : 'Assistant: ');
+    const who = el('span', 'visually-hidden', role === 'user' ? 'You said: ' : 'Ava: ');
     wrap.appendChild(who);
     for (const para of text.split(/\n{2,}/)) wrap.appendChild(el('p', '', para));
     log.appendChild(wrap);
@@ -131,7 +131,7 @@ import site from '../data/site.json';
   }
 
   function welcome() {
-    addBubble('system', "Hi! I can answer questions about our services, prices, hours and booking.\n\nI'm an AI assistant, so I can't give medical advice. Please don't share personal health details here. In an emergency, call 911.");
+    addBubble('system', "Hi, I'm Ava! I can answer questions about our services, prices, hours and booking.\n\nI'm an AI assistant, so I can't give medical advice. Please don't share personal health details here. In an emergency, call 911.");
     const chips = el('div', 'ic-suggest');
     for (const q of ['How much is an IV?', 'How does weight loss work?', 'What are your hours?', 'What does membership include?']) {
       const b = el('button', 'ic-chip', q); b.setAttribute('type', 'button');
@@ -143,7 +143,7 @@ import site from '../data/site.json';
 
   function typing(on: boolean) {
     const t = log.querySelector('.ic-typing');
-    if (on && !t) { const x = el('div', 'ic-msg ic-assistant ic-typing'); x.setAttribute('aria-label', 'Assistant is typing'); x.innerHTML = '<span></span><span></span><span></span>'; log.appendChild(x); log.scrollTop = log.scrollHeight; }
+    if (on && !t) { const x = el('div', 'ic-msg ic-assistant ic-typing'); x.setAttribute('aria-label', 'Ava is typing'); x.innerHTML = '<span></span><span></span><span></span>'; log.appendChild(x); log.scrollTop = log.scrollHeight; }
     if (!on && t) t.remove();
   }
 
@@ -167,7 +167,7 @@ import site from '../data/site.json';
       addBubble('assistant', reply);
       history.push({ role: 'assistant', content: reply });
     } else {
-      addBubble('assistant', `Sorry, the assistant isn't available right now. Please call or text us at ${d.phone}, or book online.\n[CALL]\n[BOOK]`);
+      addBubble('assistant', `Sorry, Ava isn't available right now. Please call or text us at ${d.phone}, or book online.\n[CALL]\n[BOOK]`);
       history.pop();
     }
     store.save();
