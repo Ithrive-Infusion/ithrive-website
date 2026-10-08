@@ -30,6 +30,7 @@ const business = {
     closes: h.close,
   })),
   founder: { '@type': 'Person', name: 'Ruth Nyang', jobTitle: 'Family Nurse Practitioner', honorificSuffix: 'MSN, FNP-C' },
+  sameAs: Object.values(site.social).filter(Boolean),
 };
 ---
 <!doctype html>
