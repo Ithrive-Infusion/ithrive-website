@@ -153,20 +153,20 @@
 
   "weightLoss": {
     "phoneConsult": "Free 10-minute phone consult",
-    "initialConsult": 100,
-    "initialConsultNote": "Applied to your first month's medication if you start a program.",
+    "initialConsult": 199,
+    "initialConsultNote": "with labs included, or $100 if you bring your own labs from the last 3 months.",
     "options": [
       {
         "id": "semaglutide",
         "name": "Semaglutide (GLP-1)",
-        "price": "From $250",
-        "detail": "4-week supply, weekly injections. $250 picked up in clinic, $300 shipped. Includes supplies and a monthly follow-up visit."
+        "price": "From $200 a month",
+        "detail": "Weekly injections. Includes supplies and a monthly follow-up visit, in clinic or by telehealth."
       },
       {
         "id": "tirzepatide",
         "name": "Tirzepatide (GLP-1/GIP)",
-        "price": "$650",
-        "detail": "8-week supply, weekly injections, shipped to you. Includes supplies and a monthly follow-up visit."
+        "price": "From $350 a month",
+        "detail": "Weekly injections. Includes supplies and a monthly follow-up visit, in clinic or by telehealth."
       },
       {
         "id": "oral",
