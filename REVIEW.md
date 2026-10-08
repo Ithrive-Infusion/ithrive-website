@@ -9,7 +9,7 @@
 - [ ] **Hormone therapy:** launch date still being decided. Stays as a waitlist page.
 - [x] **Membership:** specialty IVs are excluded (confirmed by OptiMantra and the old IV menu).
 - [x] **NAD+ and Vitamin C:** keep the website prices; iZen not added. To do: update OptiMantra to match (NAD+ $200 to $500 by dose, Vitamin C $110 to $350 by dose).
-- [ ] **Social links:** pages are named "iThrive infusion and wellness" on Instagram and Facebook. Paste the exact URLs into `site.json` (they appear in the footer automatically).
+- [x] **Social links:** Instagram and Facebook added to the footer (`site.json`).
 - [x] **Reviews:** three Google review excerpts on the homepage (`src/data/reviews.json`), first name and last initial only.
 - [ ] **Photos:** using the old website photos (now stored in the repo). Replace stock images with real clinic photos when available.
 
