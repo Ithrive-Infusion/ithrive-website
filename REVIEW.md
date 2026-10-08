@@ -8,7 +8,8 @@
 - [ ] **Hours:** Sunday is shown as closed (the old site didn't list Sunday). Also, the old About page mentioned walk-ins, but the hours say "By appointment only". Which is right?
 - [ ] **Hormone therapy:** launch date, and whether it starts with men only. It currently shows as a waitlist page.
 - [x] **Membership:** specialty IVs are excluded (confirmed by OptiMantra and the old IV menu).
-- [ ] **Price differences between the website and OptiMantra:** NAD+ ($150 in OptiMantra vs $200 to $500 by dose on the site) and high-dose Vitamin C ($250 vs $110 to $350 by dose). OptiMantra also lists iZen ($175) and a few new add-ons that are not on the site.
+- [x] **NAD+ and high-dose Vitamin C prices:** keep the website's prices by dose (NAD+ $200 to $500, Vitamin C $110 to $350). iZen stays off the site.
+- [ ] **Update OptiMantra to match the website:** it still shows NAD+ at $150 and high-dose Vitamin C at $250.
 - [ ] **Social links:** Instagram, Facebook, YouTube and TikTok URLs for `site.json`.
 - [ ] **Reviews:** star rating, review count and three short quotes (with permission). There's a placeholder spot on the homepage.
 - [ ] **Photos:** you, the clinic and the infusion chairs.
