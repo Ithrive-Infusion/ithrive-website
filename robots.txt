@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ithriveinfusion.com/sitemap-index.xml
