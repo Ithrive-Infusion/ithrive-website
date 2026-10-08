@@ -2,24 +2,23 @@
 
 ## Needs Ruth's answer
 - [x] **Weight loss consult price:** now matches OptiMantra: $199 with labs, $100 if the patient brings labs.
-- [ ] **GLP-1 prices:** the site now uses OptiMantra's "from $200/month" (semaglutide) and "from $350/month" (tirzepatide). The old website said $250 to $300 for the first month and $650 for 2 months. Confirm which is current.
+- [x] **GLP-1 prices:** using the old website: semaglutide $250 in clinic or $300 shipped (4 weeks); tirzepatide $650 shipped (8 weeks). OptiMantra shows "from $200" and "from $350"; update OptiMantra if the website prices are current.
 - [x] **Free phone consult link:** OptiMantra has no direct link per service; it is the first option on the booking page.
-- [ ] **GLP-1 details:** which medications you prescribe, whether each is FDA-approved brand or compounded, and the pharmacy. The weight loss page currently tells patients to ask.
-- [ ] **Hours:** Sunday is shown as closed (the old site didn't list Sunday). Also, the old About page mentioned walk-ins, but the hours say "By appointment only". Which is right?
-- [ ] **Hormone therapy:** launch date, and whether it starts with men only. It currently shows as a waitlist page.
+- [ ] **GLP-1 details:** the old website does not say whether semaglutide and tirzepatide are FDA-approved brand or compounded, or which pharmacy. The weight loss page tells patients to ask. Bella capsules are listed as compounded (from the old website).
+- [x] **Hours:** match the old homepage: Thursday and Friday 8 to 5, Saturday 7 to 6, by appointment only. Sunday to Wednesday closed.
+- [ ] **Hormone therapy:** launch date still being decided. Stays as a waitlist page.
 - [x] **Membership:** specialty IVs are excluded (confirmed by OptiMantra and the old IV menu).
-- [x] **NAD+ and high-dose Vitamin C prices:** keep the website's prices by dose (NAD+ $200 to $500, Vitamin C $110 to $350). iZen stays off the site.
-- [ ] **Update OptiMantra to match the website:** it still shows NAD+ at $150 and high-dose Vitamin C at $250.
-- [ ] **Social links:** Instagram, Facebook, YouTube and TikTok URLs for `site.json`.
-- [ ] **Reviews:** star rating, review count and three short quotes (with permission). There's a placeholder spot on the homepage.
-- [ ] **Photos:** you, the clinic and the infusion chairs.
+- [x] **NAD+ and Vitamin C:** keep the website prices; iZen not added. To do: update OptiMantra to match (NAD+ $200 to $500 by dose, Vitamin C $110 to $350 by dose).
+- [ ] **Social links:** pages are named "iThrive infusion and wellness" on Instagram and Facebook. Paste the exact URLs into `site.json` (they appear in the footer automatically).
+- [x] **Reviews:** three Google review excerpts on the homepage (`src/data/reviews.json`), first name and last initial only.
+- [ ] **Photos:** using the old website photos (now stored in the repo). Replace stock images with real clinic photos when available.
 
 ## Hidden until reviewed (`"review": true`)
 - PICO IV (CBD): needs regulatory review of IV CBD.
 - Sermorelin: needs clinician and pharmacy review.
 
 ## Left off on purpose
-- Bella oral capsule ingredient list: shown as "Oral medication options, discussed at consult" until reviewed by a clinician and the pharmacy.
+- Bella oral capsule ingredient list: the site says once-daily compounded capsules, no phentermine, some contain caffeine. Full ingredients are discussed at the consult.
 - Stand-alone prescription add-ons (Benadryl, Reglan, Toradol, Zofran): now described only as provider-added extras.
 - The old 30+ single-shot pages: merged into IV Therapy and Injections, with redirects.
 
@@ -29,8 +28,8 @@
 - All health wording on the site. It was written to avoid treatment claims, but it still needs clinical sign-off and review by a healthcare advertising attorney.
 
 ## Launch checklist
-- [ ] Run `npm run images`, or add photos to `public/images/` (`logo.png`, `ruth.jpg`)
-- [ ] Connect the repository to Netlify or Cloudflare Pages
+- [x] Photos stored in `public/images/`
+- [x] Connected to Cloudflare Pages (ithrive.pages.dev)
 - [ ] Point the ithriveinfusion.com DNS at the new host
 - [ ] Submit `sitemap-index.xml` in Google Search Console
 - [ ] Update the website link in your Google Business Profile, if needed
