@@ -22,6 +22,11 @@
 - Stand-alone prescription add-ons (Benadryl, Reglan, Toradol, Zofran): now described only as provider-added extras.
 - The old 30+ single-shot pages: merged into IV Therapy and Injections, with redirects.
 
+## Chat assistant
+- [ ] Add `ANTHROPIC_API_KEY` and `WEB3FORMS_KEY` in Cloudflare (see README), and set a monthly spend limit in the Anthropic console.
+- [ ] Test the chat and a call-back request on the preview site.
+- [ ] The chat sends visitors' typed messages to Anthropic. It tells people not to share health details, and call-backs collect only name, phone, time and topic, but have counsel confirm this is acceptable without a HIPAA business associate agreement.
+
 ## Legal (have counsel review)
 - Privacy policy, terms of use and medical disclaimer are drafts.
 - Text-message consent wording, if you start texting patients reminders or marketing.
